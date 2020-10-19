@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/video/video.iml" filepath="$PROJECT_DIR$/video/video.iml" />
+      <module fileurl="file://$PROJECT_DIR$/video/video-dao/video-dao.iml" filepath="$PROJECT_DIR$/video/video-dao/video-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/video/video-pojo/video-pojo.iml" filepath="$PROJECT_DIR$/video/video-pojo/video-pojo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/video/video-service/video-service.iml" filepath="$PROJECT_DIR$/video/video-service/video-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/video/video-web/video-web.iml" filepath="$PROJECT_DIR$/video/video-web/video-web.iml" />
+    </modules>
+  </component>
+</project>
