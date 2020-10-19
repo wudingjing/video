@@ -155,6 +155,15 @@
             }
 
         }
+
+
+
+        function queryBook(pageNum) {
+
+            $("#pageNum").val(pageNum);
+            $("#queryForm").submit();
+
+        }
     </script>
 </head>
 <body>
@@ -214,7 +223,7 @@
         <div class="col-md-4"></div>
         <div class="col-md-6">
             <!-- 查询相关组件 -->
-            <form class="navbar-form navbar-right" action="${pageContext.request.contextPath}/video/list" method="post">
+            <form class="navbar-form navbar-right" action="${pageContext.request.contextPath}/video/list" id="queryForm" method="post">
                 <input type="text" name="title" class="form-control" placeholder="标题" value="${queryVo.title}">
                 <div class="btn-group">
                     <button type="button" id="speakerName"
@@ -266,7 +275,8 @@
                     </ul>
                     <input type="hidden" name="courseId" id="courseId" value="${queryVo.courseId}"/>
                 </div>
-                <button type="submit" class="btn btn-info dropdown-toggle">查询</button>
+                <button type="submit" class="btn btn-info dropdown-toggle" >查询</button>
+                <input type="hidden" name="pageNum" id="pageNum">
             </form>
 
         </div>
@@ -298,7 +308,7 @@
             </tr>
             </thead>
             <tbody>
-            <c:forEach items="${page.rows}" var="video" varStatus="status">
+            <c:forEach items="${videoList}" var="video" varStatus="status">
                 <tr>
                     <td><input type="checkbox" name="ids" value="${video.id}"
                                onclick="selectOne(this)"/></td>
@@ -325,11 +335,21 @@
 
     </form>
 </div>
-<div class="container">
-    <div class="navbar-right" style="padding-right: 17px">
-        <p:page url="${pageContext.request.contextPath}/video/list"></p:page>
-    </div>
+
+<div class="sp1" align="center">
+    <strong>
+        <a href="javascript:void(0)" onclick="queryBook(${pageInfo.navigateFirstPage})">首页</a>|
+        <a href="javascript:void(0)" onclick="queryBook(${pageInfo.pageNum-1})">上一页</a>|
+        <a href="javascript:void(0)" onclick="queryBook(${pageInfo.pageNum+1})">下一页</a>|
+        <a href="javascript:void(0)" onclick="queryBook(${pageInfo.navigateLastPage})">尾页</a>|
+        第${pageInfo.pageNum}页/共${pageInfo.pages}页(${pageInfo.total}条)
+    </strong>
 </div>
+<%--<div class="container">--%>
+<%--    <div class="navbar-right" style="padding-right: 17px">--%>
+
+<%--    </div>--%>
+<%--</div>--%>
 
 
 </body>
