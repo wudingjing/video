@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface SubjectService {
     List<Subject> findAllSubject();
+    Subject fingById(Integer id);
+    Subject findBySubjectId(Integer id);
 }

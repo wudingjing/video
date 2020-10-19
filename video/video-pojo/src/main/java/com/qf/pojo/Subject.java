@@ -1,5 +1,7 @@
 package com.qf.pojo;
 
+import java.util.List;
+
 public class Subject {
     private Integer id;
 
@@ -8,6 +10,16 @@ public class Subject {
     public Integer getId() {
         return id;
     }
+
+    public List<Course> getCourseList() {
+        return courseList;
+    }
+
+    public void setCourseList(List<Course> courseList) {
+        this.courseList = courseList;
+    }
+
+    private List<Course> courseList;
 
     public void setId(Integer id) {
         this.id = id;

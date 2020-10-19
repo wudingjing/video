@@ -18,6 +18,8 @@ public interface SubjectMapper {
 
     int insertSelective(Subject record);
 
+    Subject findBySubjectId(Integer id);
+
     List<Subject> selectByExample(SubjectExample example);
 
     Subject selectByPrimaryKey(Integer id);

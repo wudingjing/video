@@ -1,5 +1,7 @@
 package com.qf.pojo;
 
+import java.util.List;
+
 public class Course {
     private Integer id;
 
@@ -8,6 +10,16 @@ public class Course {
     private Integer subjectId;
 
     private String courseDesc;
+
+    public List<Video> getVideoList() {
+        return videoList;
+    }
+
+    public void setVideoList(List<Video> videoList) {
+        this.videoList = videoList;
+    }
+
+    private List<Video> videoList;
 
     public Integer getId() {
         return id;
