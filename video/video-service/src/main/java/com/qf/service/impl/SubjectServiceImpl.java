@@ -18,15 +18,4 @@ public class SubjectServiceImpl implements SubjectService {
     public List<Subject> findAllSubject() {
         return subjectMapper.selectByExample(null);
     }
-
-    @Override
-    public Subject fingById(Integer id) {
-        return subjectMapper.selectByPrimaryKey(id);
-    }
-
-    @Override
-    public Subject findBySubjectId(Integer id) {
-        return subjectMapper.findBySubjectId(id);
-    }
-
 }
