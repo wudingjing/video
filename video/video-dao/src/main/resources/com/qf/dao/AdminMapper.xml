@@ -83,7 +83,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
+    select
     <include refid="Base_Column_List" />
     from admin
     where id = #{id,jdbcType=INTEGER}
@@ -193,4 +193,18 @@
       roles = #{roles,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+
+  <select id="login" resultMap="BaseResultMap">
+    select * from admin
+    <where>
+        <if test="username != null">
+           and username=#{username}
+        </if>
+        <if test="password != null" >
+          and  password = #{password}
+        </if>
+    </where>
+  </select>
+
 </mapper>
