@@ -21,6 +21,6 @@ public class SubjectController {
     public String findAllSubject(Model model){
         List<Subject> subjectList = subjectService.findAllSubject();
         model.addAttribute("subjectList",subjectList);
-        return "/course.jsp";
+        return "/before/course.jsp";
     }
 }

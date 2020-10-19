@@ -21,7 +21,7 @@
         <mvc:default-servlet-handler></mvc:default-servlet-handler>
 
         <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-                <property name="prefix" value="/WEB-INF/jsp/before"></property>
+                <property name="prefix" value="/WEB-INF/jsp"></property>
                 <property name="suffix" value=""></property>
         </bean>
 </beans>
