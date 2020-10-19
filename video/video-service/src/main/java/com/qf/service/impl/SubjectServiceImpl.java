@@ -28,4 +28,5 @@ public class SubjectServiceImpl implements SubjectService {
     public Subject findBySubjectId(Integer id) {
         return subjectMapper.findBySubjectId(id);
     }
+
 }
