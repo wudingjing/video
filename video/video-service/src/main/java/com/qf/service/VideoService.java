@@ -9,4 +9,10 @@ public interface VideoService {
     List<Video> findAll(QueryVo queryVo);
 
     int deleteById(Integer id);
+
+    int deleteByIds(Integer[] ids);
+
+    Video findById(Integer id);
+
+    void update(Video video);
 }

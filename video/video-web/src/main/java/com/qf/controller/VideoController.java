@@ -64,4 +64,41 @@ public class VideoController {
     }
 
 
+    @RequestMapping("delBatchVideos")
+    public String delBatchVideos(Integer[] ids) {
+        videoService.deleteByIds(ids);
+        return "redirect:/video/list";
+    }
+
+    @RequestMapping("edit")
+    public String edit(Integer id, Model model) {
+        Video video = videoService.findById(id);
+        List<Speaker> speakerList = speakerService.findAll();
+        List<Course> courseList = courseService.findAll();
+
+        model.addAttribute("speakerList", speakerList);
+        model.addAttribute("courseList", courseList);
+        model.addAttribute("video", video);
+        return "/behind/addVideo.jsp";
+    }
+
+
+    @RequestMapping("addVideo")
+    public String addVideo(Model model) {
+        List<Speaker> speakerList = speakerService.findAll();
+        List<Course> courseList = courseService.findAll();
+
+        model.addAttribute("speakerList", speakerList);
+        model.addAttribute("courseList", courseList);
+        return "/behind/addVideo.jsp";
+    }
+
+
+    @RequestMapping("saveOrUpdate")
+    public String saveOrUpdate(Video video,Model model) {
+        videoService.update(video);
+        return "redirect:/video/list";
+    }
+
+
 }
