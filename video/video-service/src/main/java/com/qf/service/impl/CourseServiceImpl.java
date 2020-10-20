@@ -18,4 +18,6 @@ public class CourseServiceImpl implements CourseService {
     public List<Course> findAll() {
         return courseMapper.selectByExample(null);
     }
+
+
 }
