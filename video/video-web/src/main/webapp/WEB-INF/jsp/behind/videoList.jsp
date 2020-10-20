@@ -336,20 +336,15 @@
     </form>
 </div>
 
-<div class="sp1" align="center">
-    <strong>
+<div class="container">
+    <div class="navbar-right" style="padding-right: 17px">
         <a href="javascript:void(0)" onclick="queryBook(${pageInfo.navigateFirstPage})">首页</a>|
         <a href="javascript:void(0)" onclick="queryBook(${pageInfo.pageNum-1})">上一页</a>|
         <a href="javascript:void(0)" onclick="queryBook(${pageInfo.pageNum+1})">下一页</a>|
         <a href="javascript:void(0)" onclick="queryBook(${pageInfo.navigateLastPage})">尾页</a>|
         第${pageInfo.pageNum}页/共${pageInfo.pages}页(${pageInfo.total}条)
-    </strong>
+    </div>
 </div>
-<%--<div class="container">--%>
-<%--    <div class="navbar-right" style="padding-right: 17px">--%>
-
-<%--    </div>--%>
-<%--</div>--%>
 
 
 </body>

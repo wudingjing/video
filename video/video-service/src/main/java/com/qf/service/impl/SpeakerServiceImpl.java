@@ -17,6 +17,26 @@ public class SpeakerServiceImpl implements SpeakerService {
     @Override
     public List<Speaker> findAll() {
 
-        return speakerMapper.selectByExample(null);
+        return speakerMapper.selectByExampleWithBLOBs(null);
+    }
+
+    @Override
+    public int deleteById(Integer id) {
+        return speakerMapper.deleteByPrimaryKey(id);
+    }
+
+    @Override
+    public Speaker findById(Integer id) {
+        return speakerMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public void update(Speaker speaker) {
+        Speaker speaker1 = speakerMapper.selectByPrimaryKey(speaker.getId());
+        if (speaker1 == null) {
+            speakerMapper.insert(speaker);
+        } else {
+            speakerMapper.updateByPrimaryKeyWithBLOBs(speaker);
+        }
     }
 }
