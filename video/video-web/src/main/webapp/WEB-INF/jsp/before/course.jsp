@@ -261,7 +261,7 @@
         //alert($("#isLogin").val());
         if ((null != "${sessionScope.userAccount}" && "${sessionScope.userAccount}" != "") || ($("#isLogin").val() == 1)) {
             //如果登录
-            location.href = "${pageContext.request.contextPath}/video/showVideo?videoId=" + videoId + "&subjectName=" + '${subject.subjectName}';
+            location.href = "/video/showVideo?videoId=" + videoId + "&subjectName=" + '${subject.subjectName}';
         } else {
             //如果不登录，弹登录框
             $("#login").removeClass("hidden");
@@ -274,5 +274,37 @@
 
 
 </body>
+<script src="../../../js/index.js"></script>
+<script type="application/javascript">
+    function commitLogin() {
+        // alert("login");
+        var email = $("#loginEmail").val();
+        var password = $("#loginPassword").val();
+        if (null != email && email != "" && null != password && password != "") {
+            var user = $("#loginForm").serialize();
+            // alert(user);
+            // post要小写
+            $.post("/user/loginUser", user, function (data) {
+                // alert(data);
+                if (data == 'success') {
 
+                    //登录框消失
+                    $("#login").addClass("hidden");
+
+                    $("#account").text($("#loginEmail").val());
+                    //将注册的user信息展示
+                    $("#regBlock").css("display", "none");
+                    $("#userBlock").css("display", "block");
+
+                    $("#isLogin").val(1);
+                }
+            });
+
+            return false;
+        }
+
+        return false;
+    }
+
+</script>
 </html>

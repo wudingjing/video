@@ -19,6 +19,7 @@
     <script src="${pageContext.request.contextPath}/js/gVerify.js"></script>
     <script type="text/javascript">
 
+
         $(function () {
 
             //div 两个哪个显示呢？
@@ -292,5 +293,41 @@
 
 </body>
 
-<script src="${pageContext.request.contextPath}/js/index.js"></script>
+<%--<script src="${pageContext.request.contextPath}/js/index.js"></script>--%>
+<script src="../../../js/index.js"></script>
+
+
+<script type="application/javascript">
+    function commitLogin() {
+        // alert("login");
+        var email = $("#loginEmail").val();
+        var password = $("#loginPassword").val();
+        if (null != email && email != "" && null != password && password != "") {
+            var user = $("#loginForm").serialize();
+            // alert(user);
+            // post要小写
+            $.post("/user/loginUser", user, function (data) {
+                // alert(data);
+                if (data == 'success') {
+
+                    //登录框消失
+                    $("#login").addClass("hidden");
+
+                    $("#account").text($("#loginEmail").val());
+                    //将注册的user信息展示
+                    $("#regBlock").css("display", "none");
+                    $("#userBlock").css("display", "block");
+
+                    $("#isLogin").val(1);
+                }
+            });
+
+            return false;
+        }
+
+        return false;
+    }
+
+</script>
+
 </html>
