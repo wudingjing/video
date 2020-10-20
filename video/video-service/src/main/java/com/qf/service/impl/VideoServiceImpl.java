@@ -23,6 +23,6 @@ public class VideoServiceImpl implements VideoService {
 
     @Override
     public int deleteById(Integer id) {
-        return videoMapper.deleteById(id);
+        return videoMapper.deleteByPrimaryKey(id);
     }
 }

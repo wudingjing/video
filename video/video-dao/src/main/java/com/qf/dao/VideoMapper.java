@@ -13,7 +13,7 @@ public interface VideoMapper {
 
     int deleteByExample(VideoExample example);
 
-    int deleteById(Integer id);
+    int deleteByPrimaryKey(Integer id);
 
     int insert(Video record);
 
