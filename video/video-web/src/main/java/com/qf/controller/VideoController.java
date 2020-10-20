@@ -3,12 +3,10 @@ package com.qf.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.qf.pojo.Course;
-import com.qf.pojo.QueryVo;
-import com.qf.pojo.Speaker;
-import com.qf.pojo.Video;
+import com.qf.pojo.*;
 import com.qf.service.CourseService;
 import com.qf.service.SpeakerService;
+import com.qf.service.SubjectService;
 import com.qf.service.VideoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -32,6 +31,9 @@ public class VideoController {
 
     @Autowired
     private CourseService courseService;
+
+    @Autowired
+    private SubjectService subjectService;
 
 
     @RequestMapping("list")
@@ -100,5 +102,18 @@ public class VideoController {
         return "redirect:/video/list";
     }
 
+    @RequestMapping("showVideo")
+    public ModelAndView showVideo(@RequestParam(value = "videoId") Integer id, String subjectName){
+        Video video = videoService.fingVideo(id);
+        Course course = courseService.fingByCoursePlus(video.getCourseId());
+        ModelAndView modelAndView = new ModelAndView();
+        List<Subject> subjectList = subjectService.findAllSubject();
+        modelAndView.addObject("video",video);
+        modelAndView.addObject("course",course);
+        modelAndView.addObject("subjectName",subjectName);
+        modelAndView.addObject("subjectList",subjectList);
+        modelAndView.setViewName("/before/section.jsp");
+        return modelAndView;
+    }
 
 }

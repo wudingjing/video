@@ -23,8 +23,25 @@ public class Video {
     private String detail;
 
     private Speaker speaker;
+
+
+    public Speaker getSpeaker() {
+        return speaker;
+    }
+
+    public void setSpeaker(Speaker speaker) {
+        this.speaker = speaker;
+    }
+
     private Course course;
 
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
+    }
 
     public Integer getId() {
         return id;

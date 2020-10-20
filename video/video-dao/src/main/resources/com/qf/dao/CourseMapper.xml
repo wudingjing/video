@@ -9,6 +9,33 @@
   <resultMap id="ResultMapWithBLOBs" type="com.qf.pojo.Course" extends="BaseResultMap" >
     <result column="course_desc" property="courseDesc" jdbcType="LONGVARCHAR" />
   </resultMap>
+
+
+  <resultMap id="CoursePlus" type="com.qf.pojo.Course">
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="course_title" property="courseTitle" jdbcType="VARCHAR" />
+    <result column="subject_id" property="subjectId" jdbcType="INTEGER" />
+    <result column="course_desc" property="courseDesc" jdbcType="LONGVARCHAR" />
+
+    <collection property="videoList" ofType="com.qf.pojo.Video">
+      <id column="vid" property="id" jdbcType="INTEGER" />
+      <result column="title" property="title" jdbcType="VARCHAR" />
+      <result column="detail" property="detail" jdbcType="VARCHAR" />
+      <result column="time" property="time" jdbcType="INTEGER" />
+      <result column="speaker_id" property="speakerId" jdbcType="INTEGER" />
+      <result column="course_id" property="courseId" jdbcType="INTEGER" />
+      <result column="video_url" property="videoUrl" jdbcType="VARCHAR" />
+      <result column="image_url" property="imageUrl" jdbcType="VARCHAR" />
+      <result column="play_num" property="playNum" jdbcType="INTEGER" />
+    </collection>
+  </resultMap>
+  <select id="fingByCoursePlus" resultMap="CoursePlus">
+    SELECT c.id,c.course_title,c.subject_id,c.course_desc,v.id as vid,v.title,v.detail,v.time,
+    v.speaker_id,v.course_id,v.video_url,v.image_url,v.play_num FROM
+    video v,course c where c.id=v.course_id
+    and course_id=#{id}
+  </select>
+
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >

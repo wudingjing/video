@@ -25,7 +25,9 @@ public class CourseController {
     @RequestMapping("/course/{subid}")
     public String findById(Model model, @PathVariable(name = "subid")Integer id){
         Subject subject = subjectService.findBySubjectId(id);
+        List<Subject> subjectList = subjectService.findAllSubject();
         model.addAttribute("subject",subject);
+        model.addAttribute("subjectList",subjectList);
         return "/before/course.jsp";
     }
 }

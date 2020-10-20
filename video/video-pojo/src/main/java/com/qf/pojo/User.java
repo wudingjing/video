@@ -13,7 +13,7 @@ public class User {
 
     private String code;
 
-    private String nickname;
+    private String nickName;
 
     private String sex;
 
@@ -21,7 +21,7 @@ public class User {
 
     private String address;
 
-    private String imgurl;
+    private String imgUrl;
 
     private Date createtime;
 
@@ -65,12 +65,12 @@ public class User {
         this.code = code == null ? null : code.trim();
     }
 
-    public String getNickname() {
-        return nickname;
+    public String getnickName() {
+        return nickName;
     }
 
-    public void setNickname(String nickname) {
-        this.nickname = nickname == null ? null : nickname.trim();
+    public void setnickName(String nickName) {
+        this.nickName = nickName == null ? null : nickName.trim();
     }
 
     public String getSex() {
@@ -97,12 +97,12 @@ public class User {
         this.address = address == null ? null : address.trim();
     }
 
-    public String getImgurl() {
-        return imgurl;
+    public String getImgUrl() {
+        return imgUrl;
     }
 
-    public void setImgurl(String imgurl) {
-        this.imgurl = imgurl == null ? null : imgurl.trim();
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl == null ? null : imgUrl.trim();
     }
 
     public Date getCreatetime() {

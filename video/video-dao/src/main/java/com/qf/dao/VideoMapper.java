@@ -25,6 +25,8 @@ public interface VideoMapper {
 
     Video selectByPrimaryKey(Integer id);
 
+    Video fingVideo(Integer id);
+
     int updateByExampleSelective(@Param("record") Video record, @Param("example") VideoExample example);
 
     int updateByExampleWithBLOBs(@Param("record") Video record, @Param("example") VideoExample example);

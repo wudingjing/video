@@ -49,4 +49,9 @@ public class VideoServiceImpl implements VideoService {
             videoMapper.updateByPrimaryKey(video);
         }
     }
+
+    @Override
+    public Video fingVideo(Integer id) {
+        return videoMapper.fingVideo(id);
+    }
 }

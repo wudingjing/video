@@ -19,7 +19,6 @@
     <script src="${pageContext.request.contextPath}/js/gVerify.js"></script>
     <script type="text/javascript">
 
-
         $(function () {
 
             //div 两个哪个显示呢？
@@ -250,7 +249,7 @@
             <img src="${pageContext.request.contextPath}/img/logo.png" alt="" class="ma">
         </div>
         <div class="mask_content_body">
-            <form id="loginForm" action="#">
+            <form id="loginForm" action="/user/loginUser">
                 <h3>快速登录</h3>
                 <input type="email" id="loginEmail" placeholder="请输入邮箱" name="email">
                 <input type="password" id="loginPassword" placeholder="请输入密码" name="password">
@@ -293,41 +292,5 @@
 
 </body>
 
-<%--<script src="${pageContext.request.contextPath}/js/index.js"></script>--%>
-<script src="../../../js/index.js"></script>
-
-
-<script type="application/javascript">
-    function commitLogin() {
-        // alert("login");
-        var email = $("#loginEmail").val();
-        var password = $("#loginPassword").val();
-        if (null != email && email != "" && null != password && password != "") {
-            var user = $("#loginForm").serialize();
-            // alert(user);
-            // post要小写
-            $.post("/user/loginUser", user, function (data) {
-                // alert(data);
-                if (data == 'success') {
-
-                    //登录框消失
-                    $("#login").addClass("hidden");
-
-                    $("#account").text($("#loginEmail").val());
-                    //将注册的user信息展示
-                    $("#regBlock").css("display", "none");
-                    $("#userBlock").css("display", "block");
-
-                    $("#isLogin").val(1);
-                }
-            });
-
-            return false;
-        }
-
-        return false;
-    }
-
-</script>
-
+<script src="${pageContext.request.contextPath}/js/index.js"></script>
 </html>

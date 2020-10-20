@@ -22,6 +22,8 @@ public interface CourseMapper {
 
     List<Course> selectByExample(CourseExample example);
 
+    Course fingByCoursePlus(Integer id);
+
     Course selectByPrimaryKey(Integer id);
 
     int updateByExampleSelective(@Param("record") Course record, @Param("example") CourseExample example);

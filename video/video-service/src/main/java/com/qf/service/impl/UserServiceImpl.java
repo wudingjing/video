@@ -15,4 +15,19 @@ public class UserServiceImpl implements UserService {
     public User login(User user) {
         return userMapper.login(user);
     }
+
+    @Override
+    public int insert(User user) {
+        return userMapper.insert(user);
+    }
+
+    @Override
+    public User lookUser(String email) {
+        return userMapper.lookUser(email);
+    }
+
+    @Override
+    public void updateUser(User user) {
+        userMapper.updateByPrimaryKey(user);
+    }
 }

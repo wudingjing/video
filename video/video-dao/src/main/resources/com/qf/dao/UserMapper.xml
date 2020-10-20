@@ -7,11 +7,11 @@
         <result column="phoneNum" property="phonenum" jdbcType="VARCHAR"/>
         <result column="password" property="password" jdbcType="VARCHAR"/>
         <result column="code" property="code" jdbcType="VARCHAR"/>
-        <result column="nickName" property="nickname" jdbcType="VARCHAR"/>
+        <result column="nickName" property="nickName" jdbcType="VARCHAR"/>
         <result column="sex" property="sex" jdbcType="VARCHAR"/>
         <result column="birthday" property="birthday" jdbcType="VARCHAR"/>
         <result column="address" property="address" jdbcType="VARCHAR"/>
-        <result column="imgUrl" property="imgurl" jdbcType="VARCHAR"/>
+        <result column="imgUrl" property="imgUrl" jdbcType="VARCHAR"/>
         <result column="createTime" property="createtime" jdbcType="TIMESTAMP"/>
     </resultMap>
     <sql id="Example_Where_Clause">
@@ -296,16 +296,20 @@
       phoneNum = #{phonenum,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
       code = #{code,jdbcType=VARCHAR},
-      nickName = #{nickname,jdbcType=VARCHAR},
+      nickName = #{nickName,jdbcType=VARCHAR},
       sex = #{sex,jdbcType=VARCHAR},
       birthday = #{birthday,jdbcType=VARCHAR},
       address = #{address,jdbcType=VARCHAR},
-      imgUrl = #{imgurl,jdbcType=VARCHAR},
+      imgUrl = #{imgUrl,jdbcType=VARCHAR},
       createTime = #{createtime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
 
     <select id="login" resultMap="BaseResultMap">
     select * from user where email = #{email} and  password = #{password}
+    </select>
+
+    <select id="lookUser" resultMap="BaseResultMap">
+    select * from user where email = #{email}
     </select>
 </mapper>

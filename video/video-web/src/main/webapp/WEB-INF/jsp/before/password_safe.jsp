@@ -28,8 +28,8 @@
 
                 var oldPass = $("#oldPassword").val();
                 if (null != oldPass && oldPass != "") {
-
-                    var params = {"password": oldPass};
+                    // alert(oldPass)
+                    var params = {password: oldPass};
                     // alert(params);
                     $.post("${pageContext.request.contextPath}/user/validatePassword", params, function (data) {
                         if (data == "success") {
@@ -101,7 +101,7 @@
                     </c:if>
 
                     <c:if test="${not empty user.imgUrl}">
-                        <img id="avatar" src="http://localhost:8080/Videos/userAvatar/${user.imgUrl}" alt="">
+                        <img id="avatar" src="${user.imgUrl}" alt="">
                     </c:if>
 
                 </a>
@@ -131,7 +131,7 @@
                         </c:if>
 
                         <c:if test="${not empty user.imgUrl}">
-                            <img id="avatar" width="180px" height="180px" src="http://localhost:8080/Videos/userAvatar/${user.imgUrl}" alt="">
+                            <img id="avatar" width="180px" height="180px" src="${user.imgUrl}" alt="">
                         </c:if>
 
                     </div>

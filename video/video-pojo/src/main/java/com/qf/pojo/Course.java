@@ -1,7 +1,9 @@
 package com.qf.pojo;
 
-import java.util.List;
+import lombok.Data;
 
+import java.util.List;
+@Data
 public class Course {
     private Integer id;
 

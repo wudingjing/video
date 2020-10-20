@@ -90,7 +90,7 @@
                       </c:if>
                       
                       <c:if test="${not empty user.imgUrl}">
-                         <img id="avatar" src="http://localhost:8081/video/${user.imgUrl}" alt="">
+                         <img id="avatar" src="${user.imgUrl}" alt="">
                       </c:if>
                        
                     </a>

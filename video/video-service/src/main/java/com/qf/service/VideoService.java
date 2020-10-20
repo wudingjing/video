@@ -15,4 +15,6 @@ public interface VideoService {
     Video findById(Integer id);
 
     void update(Video video);
+
+    Video fingVideo(Integer id);
 }

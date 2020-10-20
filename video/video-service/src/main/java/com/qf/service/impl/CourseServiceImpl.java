@@ -19,5 +19,10 @@ public class CourseServiceImpl implements CourseService {
         return courseMapper.selectByExample(null);
     }
 
+    @Override
+    public Course fingByCoursePlus(Integer id) {
+        return courseMapper.fingByCoursePlus(id);
+    }
+
 
 }

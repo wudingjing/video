@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface CourseService {
     List<Course> findAll();
-
+    Course fingByCoursePlus(Integer id);
 }
