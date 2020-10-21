@@ -4,15 +4,15 @@
     <resultMap id="BaseResultMap" type="com.qf.pojo.User">
         <id column="id" property="id" jdbcType="INTEGER"/>
         <result column="email" property="email" jdbcType="VARCHAR"/>
-        <result column="phoneNum" property="phonenum" jdbcType="VARCHAR"/>
+        <result column="phoneNum" property="phoneNum" jdbcType="VARCHAR"/>
         <result column="password" property="password" jdbcType="VARCHAR"/>
         <result column="code" property="code" jdbcType="VARCHAR"/>
         <result column="nickName" property="nickName" jdbcType="VARCHAR"/>
         <result column="sex" property="sex" jdbcType="VARCHAR"/>
-        <result column="birthday" property="birthday" jdbcType="VARCHAR"/>
+        <result column="birthDay" property="birthDay" jdbcType="VARCHAR"/>
         <result column="address" property="address" jdbcType="VARCHAR"/>
         <result column="imgUrl" property="imgUrl" jdbcType="VARCHAR"/>
-        <result column="createTime" property="createtime" jdbcType="TIMESTAMP"/>
+        <result column="createTime" property="createTime" jdbcType="TIMESTAMP"/>
     </resultMap>
 
     <sql id="Example_Where_Clause">
@@ -76,7 +76,7 @@
         </where>
     </sql>
     <sql id="Base_Column_List">
-    id, email, phoneNum, password, code, nickName, sex, birthday, address, imgUrl, createTime
+    id, email, phoneNum, password, code, nickName, sex, birthDay, address, imgUrl, createTime
   </sql>
     <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.qf.pojo.UserExample">
         select
@@ -111,12 +111,12 @@
     <insert id="insert" parameterType="com.qf.pojo.User">
     insert into user (id, email, phoneNum, 
       password, code, nickName, 
-      sex, birthday, address, 
+      sex, birthDay, address, 
       imgUrl, createTime)
-    values (#{id,jdbcType=INTEGER}, #{email,jdbcType=VARCHAR}, #{phonenum,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=INTEGER}, #{email,jdbcType=VARCHAR}, #{phoneNum,jdbcType=VARCHAR}, 
       #{password,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR},
-      #{sex,jdbcType=VARCHAR}, #{birthday,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
-      #{imgUrl,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP})
+      #{sex,jdbcType=VARCHAR}, #{birthDay,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{imgUrl,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP})
   </insert>
     <insert id="insertSelective" parameterType="com.qf.pojo.User">
         insert into user
@@ -127,7 +127,7 @@
             <if test="email != null">
                 email,
             </if>
-            <if test="phonenum != null">
+            <if test="phoneNum != null">
                 phoneNum,
             </if>
             <if test="password != null">
@@ -136,22 +136,22 @@
             <if test="code != null">
                 code,
             </if>
-            <if test="nickname != null">
+            <if test="nickName != null">
                 nickName,
             </if>
             <if test="sex != null">
                 sex,
             </if>
-            <if test="birthday != null">
-                birthday,
+            <if test="birthDay != null">
+                birthDay,
             </if>
             <if test="address != null">
                 address,
             </if>
-            <if test="imgurl != null">
+            <if test="imgUrl != null">
                 imgUrl,
             </if>
-            <if test="createtime != null">
+            <if test="createTime != null">
                 createTime,
             </if>
         </trim>
@@ -162,8 +162,8 @@
             <if test="email != null">
                 #{email,jdbcType=VARCHAR},
             </if>
-            <if test="phonenum != null">
-                #{phonenum,jdbcType=VARCHAR},
+            <if test="phoneNum != null">
+                #{phoneNum,jdbcType=VARCHAR},
             </if>
             <if test="password != null">
                 #{password,jdbcType=VARCHAR},
@@ -171,23 +171,23 @@
             <if test="code != null">
                 #{code,jdbcType=VARCHAR},
             </if>
-            <if test="nickname != null">
-                #{nickname,jdbcType=VARCHAR},
+            <if test="nickName != null">
+                #{nickName,jdbcType=VARCHAR},
             </if>
             <if test="sex != null">
                 #{sex,jdbcType=VARCHAR},
             </if>
-            <if test="birthday != null">
-                #{birthday,jdbcType=VARCHAR},
+            <if test="birthDay != null">
+                #{birthDay,jdbcType=VARCHAR},
             </if>
             <if test="address != null">
                 #{address,jdbcType=VARCHAR},
             </if>
-            <if test="imgurl != null">
-                #{imgurl,jdbcType=VARCHAR},
+            <if test="imgUrl != null">
+                #{imgUrl,jdbcType=VARCHAR},
             </if>
-            <if test="createtime != null">
-                #{createtime,jdbcType=TIMESTAMP},
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
             </if>
         </trim>
     </insert>
@@ -206,8 +206,8 @@
             <if test="record.email != null">
                 email = #{record.email,jdbcType=VARCHAR},
             </if>
-            <if test="record.phonenum != null">
-                phoneNum = #{record.phonenum,jdbcType=VARCHAR},
+            <if test="record.phoneNum != null">
+                phoneNum = #{record.phoneNum,jdbcType=VARCHAR},
             </if>
             <if test="record.password != null">
                 password = #{record.password,jdbcType=VARCHAR},
@@ -215,23 +215,23 @@
             <if test="record.code != null">
                 code = #{record.code,jdbcType=VARCHAR},
             </if>
-            <if test="record.nickname != null">
-                nickName = #{record.nickname,jdbcType=VARCHAR},
+            <if test="record.nickName != null">
+                nickName = #{record.nickName,jdbcType=VARCHAR},
             </if>
             <if test="record.sex != null">
                 sex = #{record.sex,jdbcType=VARCHAR},
             </if>
-            <if test="record.birthday != null">
-                birthday = #{record.birthday,jdbcType=VARCHAR},
+            <if test="record.birthDay != null">
+                birthDay = #{record.birthDay,jdbcType=VARCHAR},
             </if>
             <if test="record.address != null">
                 address = #{record.address,jdbcType=VARCHAR},
             </if>
-            <if test="record.imgurl != null">
-                imgUrl = #{record.imgurl,jdbcType=VARCHAR},
+            <if test="record.imgUrl != null">
+                imgUrl = #{record.imgUrl,jdbcType=VARCHAR},
             </if>
-            <if test="record.createtime != null">
-                createTime = #{record.createtime,jdbcType=TIMESTAMP},
+            <if test="record.createTime != null">
+                createTime = #{record.createTime,jdbcType=TIMESTAMP},
             </if>
         </set>
         <if test="_parameter != null">
@@ -242,15 +242,15 @@
         update user
         set id = #{record.id,jdbcType=INTEGER},
         email = #{record.email,jdbcType=VARCHAR},
-        phoneNum = #{record.phonenum,jdbcType=VARCHAR},
+        phoneNum = #{record.phoneNum,jdbcType=VARCHAR},
         password = #{record.password,jdbcType=VARCHAR},
         code = #{record.code,jdbcType=VARCHAR},
-        nickName = #{record.nickname,jdbcType=VARCHAR},
+        nickName = #{record.nickName,jdbcType=VARCHAR},
         sex = #{record.sex,jdbcType=VARCHAR},
-        birthday = #{record.birthday,jdbcType=VARCHAR},
+        birthDay = #{record.birthDay,jdbcType=VARCHAR},
         address = #{record.address,jdbcType=VARCHAR},
-        imgUrl = #{record.imgurl,jdbcType=VARCHAR},
-        createTime = #{record.createtime,jdbcType=TIMESTAMP}
+        imgUrl = #{record.imgUrl,jdbcType=VARCHAR},
+        createTime = #{record.createTime,jdbcType=TIMESTAMP}
         <if test="_parameter != null">
             <include refid="Update_By_Example_Where_Clause"/>
         </if>
@@ -261,8 +261,8 @@
             <if test="email != null">
                 email = #{email,jdbcType=VARCHAR},
             </if>
-            <if test="phonenum != null">
-                phoneNum = #{phonenum,jdbcType=VARCHAR},
+            <if test="phoneNum != null">
+                phoneNum = #{phoneNum,jdbcType=VARCHAR},
             </if>
             <if test="password != null">
                 password = #{password,jdbcType=VARCHAR},
@@ -270,23 +270,23 @@
             <if test="code != null">
                 code = #{code,jdbcType=VARCHAR},
             </if>
-            <if test="nickname != null">
-                nickName = #{nickname,jdbcType=VARCHAR},
+            <if test="nickName != null">
+                nickName = #{nickName,jdbcType=VARCHAR},
             </if>
             <if test="sex != null">
                 sex = #{sex,jdbcType=VARCHAR},
             </if>
-            <if test="birthday != null">
-                birthday = #{birthday,jdbcType=VARCHAR},
+            <if test="birthDay != null">
+                birthDay = #{birthDay,jdbcType=VARCHAR},
             </if>
             <if test="address != null">
                 address = #{address,jdbcType=VARCHAR},
             </if>
-            <if test="imgurl != null">
-                imgUrl = #{imgurl,jdbcType=VARCHAR},
+            <if test="imgUrl != null">
+                imgUrl = #{imgUrl,jdbcType=VARCHAR},
             </if>
-            <if test="createtime != null">
-                createTime = #{createtime,jdbcType=TIMESTAMP},
+            <if test="createTime != null">
+                createTime = #{createTime,jdbcType=TIMESTAMP},
             </if>
         </set>
         where id = #{id,jdbcType=INTEGER}
@@ -294,15 +294,15 @@
     <update id="updateByPrimaryKey" parameterType="com.qf.pojo.User">
     update user
     set email = #{email,jdbcType=VARCHAR},
-      phoneNum = #{phonenum,jdbcType=VARCHAR},
+      phoneNum = #{phoneNum,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
       code = #{code,jdbcType=VARCHAR},
       nickName = #{nickName,jdbcType=VARCHAR},
       sex = #{sex,jdbcType=VARCHAR},
-      birthday = #{birthday,jdbcType=VARCHAR},
+      birthDay = #{birthDay,jdbcType=VARCHAR},
       address = #{address,jdbcType=VARCHAR},
       imgUrl = #{imgUrl,jdbcType=VARCHAR},
-      createTime = #{createtime,jdbcType=TIMESTAMP}
+      createTime = #{createTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
 
