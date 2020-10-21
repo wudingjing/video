@@ -5,6 +5,7 @@ import com.qf.pojo.Subject;
 import com.qf.pojo.User;
 import com.qf.service.SubjectService;
 import com.qf.service.UserService;
+import com.qf.videos.utils.MailUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -165,4 +166,50 @@ public class UserController {
         User user = userService.lookUser(email);
         return user.getPassword().equals(password) ? "success" : "false";
     }
+
+    @RequestMapping("forgetPassword")
+    public String forgetPassword(){
+        return "/before/forget_password.jsp";
+    }
+    @RequestMapping("sendEmail")
+    @ResponseBody
+    public String sendEmail(String email,HttpServletRequest request){
+        User user = userService.lookUser(email);
+        String code = MailUtils.getValidateCode(6);
+        HttpSession session = request.getSession();
+        session.setAttribute("code",code);
+        System.out.println(code);
+        if (user==null){
+            return "hasNoUser";
+        } else {
+            session.setAttribute("email",email);
+            MailUtils.sendMail(email, "你好，这是您的验证码", "测试邮件随机生成的验证码是："+code);
+            return "success";
+        }
+    }
+
+    @RequestMapping("validateEmailCode")
+    public String validateEmailCode(String code,HttpServletRequest request,Model model){
+        HttpSession session = request.getSession();
+        String code1 = (String) session.getAttribute("code");
+        if (code1.equals(code)){
+            String email = (String) session.getAttribute("email");
+            model.addAttribute("email",email);
+            return "/before/reset_password.jsp";
+        } else {
+            return "";
+        }
+    }
+
+    @RequestMapping("resetPassword")
+    public String resetPassword(String password,HttpServletRequest request){
+        HttpSession session = request.getSession();
+        String email = (String) session.getAttribute("email");
+        User user = userService.lookUser(email);
+        user.setPassword(password);
+        userService.updateUser(user);
+        session.removeAttribute("email");
+        return "redirect:/index.jsp";
+    }
+
 }
