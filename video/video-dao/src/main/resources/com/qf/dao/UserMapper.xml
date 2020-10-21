@@ -14,6 +14,7 @@
         <result column="imgUrl" property="imgUrl" jdbcType="VARCHAR"/>
         <result column="createTime" property="createtime" jdbcType="TIMESTAMP"/>
     </resultMap>
+
     <sql id="Example_Where_Clause">
         <where>
             <foreach collection="oredCriteria" item="criteria" separator="or">
@@ -113,9 +114,9 @@
       sex, birthday, address, 
       imgUrl, createTime)
     values (#{id,jdbcType=INTEGER}, #{email,jdbcType=VARCHAR}, #{phonenum,jdbcType=VARCHAR}, 
-      #{password,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR},
       #{sex,jdbcType=VARCHAR}, #{birthday,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
-      #{imgurl,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP})
+      #{imgUrl,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP})
   </insert>
     <insert id="insertSelective" parameterType="com.qf.pojo.User">
         insert into user
