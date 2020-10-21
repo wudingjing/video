@@ -96,7 +96,7 @@
                             </c:if>
                         </li>
                         <li><span class="dd">生&#x3000;日：</span>
-                            <time data="1990-06-06">${user.birthday}</time>
+                            <time data="1990-06-06">${user.birthDay}</time>
                         </li>
                         <li><span class="dd">邮&#x3000;箱：</span>${user.email}</li>
                         <li><span class="dd">所在地：</span>${user.address}</li>
