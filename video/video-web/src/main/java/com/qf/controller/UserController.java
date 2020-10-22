@@ -5,6 +5,7 @@ import com.qf.pojo.Subject;
 import com.qf.pojo.User;
 import com.qf.service.SubjectService;
 import com.qf.service.UserService;
+import com.qf.videos.utils.ImageCut;
 import com.qf.videos.utils.MailUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,6 +22,7 @@ import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
 
 @Controller
 @RequestMapping("user")
@@ -57,6 +59,7 @@ public class UserController {
     @RequestMapping("insertUser")
     @ResponseBody
     public String insertUser(User user) {
+        System.out.println(user);
         userService.insert(user);
         return "success";
     }
@@ -64,8 +67,6 @@ public class UserController {
     @RequestMapping("validateEmail")
     @ResponseBody
     public String validateEmail(String email) {
-
-
         User user1 = userService.lookUser(email);
         if (user1 == null) {
             return "success";
@@ -114,19 +115,34 @@ public class UserController {
     }
 
     @RequestMapping("upLoadImage")
-    public String upLoadImage(MultipartFile image_file, Model model, HttpServletRequest request) throws IOException {
+    public String upLoadImage(@RequestParam("image_file") MultipartFile imageFile, String x1, String x2, String y1, String y2, Model model, HttpServletRequest request) throws IOException {
         String path = "D:\\WebSoft\\apache-tomcat-9.0.33\\webapps\\upload\\";
-        String filename = image_file.getOriginalFilename();
-        File file = new File(path + filename);
         String pa = "http://localhost:8083/upload/";
+        File file = new File(path);
+        if (!file.exists()) {
+            file.mkdirs();
+        }
+
+        String filename = imageFile.getOriginalFilename();
+        filename = filename.substring(filename.lastIndexOf("."));
+        String uuid = UUID.randomUUID().toString().replace("-", "");
+        filename = uuid + filename;
+        imageFile.transferTo(new File(path, filename));
+
+
+        int x1Int = (int) Double.parseDouble(x1);
+        int x2Int = (int) Double.parseDouble(x2);
+        int y1Int = (int) Double.parseDouble(y1);
+        int y2Int = (int) Double.parseDouble(y2);
+        new ImageCut().cutImage(path + "/" + filename, x1Int, y1Int, x2Int - x1Int, y2Int - y1Int);
+
         HttpSession session = request.getSession();
         String email = (String) session.getAttribute("userAccount");
         User user = userService.lookUser(email);
         user.setImgUrl(pa + filename);
-        image_file.transferTo(file);
         userService.updateUser(user);
-        model.addAttribute("user", user);
-        return "/before/change_avatar.jsp";
+
+        return "redirect:/user/showMyProfile";
     }
 
     @RequestMapping("loginOut2")
@@ -168,33 +184,34 @@ public class UserController {
     }
 
     @RequestMapping("forgetPassword")
-    public String forgetPassword(){
+    public String forgetPassword() {
         return "/before/forget_password.jsp";
     }
+
     @RequestMapping("sendEmail")
     @ResponseBody
-    public String sendEmail(String email,HttpServletRequest request){
+    public String sendEmail(String email, HttpServletRequest request) {
         User user = userService.lookUser(email);
         String code = MailUtils.getValidateCode(6);
         HttpSession session = request.getSession();
-        session.setAttribute("code",code);
+        session.setAttribute("code", code);
         System.out.println(code);
-        if (user==null){
+        if (user == null) {
             return "hasNoUser";
         } else {
-            session.setAttribute("email",email);
-            MailUtils.sendMail(email, "你好，这是您的验证码", "测试邮件随机生成的验证码是："+code);
+            session.setAttribute("email", email);
+            MailUtils.sendMail(email, "你好，这是您的验证码", "测试邮件随机生成的验证码是：" + code);
             return "success";
         }
     }
 
     @RequestMapping("validateEmailCode")
-    public String validateEmailCode(String code,HttpServletRequest request,Model model){
+    public String validateEmailCode(String code, HttpServletRequest request, Model model) {
         HttpSession session = request.getSession();
         String code1 = (String) session.getAttribute("code");
-        if (code1.equals(code)){
+        if (code1.equals(code)) {
             String email = (String) session.getAttribute("email");
-            model.addAttribute("email",email);
+            model.addAttribute("email", email);
             return "/before/reset_password.jsp";
         } else {
             return "";
@@ -202,7 +219,7 @@ public class UserController {
     }
 
     @RequestMapping("resetPassword")
-    public String resetPassword(String password,HttpServletRequest request){
+    public String resetPassword(String password, HttpServletRequest request) {
         HttpSession session = request.getSession();
         String email = (String) session.getAttribute("email");
         User user = userService.lookUser(email);
