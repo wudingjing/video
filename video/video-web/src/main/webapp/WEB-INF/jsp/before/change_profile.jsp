@@ -130,7 +130,7 @@
                                 </div>
                                 <div class="form_group">
                                     <span class="dd">生&#x3000;日：</span>  <!-- 1990-10-04 -->
-                                    <input type="text"  name="birthday" value="${user.birthday}">
+                                    <input type="text"  name="birthday" value="${user.birthDay}">
                                 </div>
                                 <div class="form_group">
                                     <span class="dd">邮&#x3000;箱：</span>
